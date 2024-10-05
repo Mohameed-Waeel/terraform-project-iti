@@ -41,3 +41,15 @@ module "dynamodb" {
   source             = "./modules/dynamodb"
   
 }
+
+# backend file for s3 module
+
+terraform {
+  backend "s3" {
+    encrypt = true    
+    bucket = "bucket-iti-wael"
+    dynamodb_table = "bucket-iti-wael"
+    key    = "terraform.tfstate"
+    region = "us-east-1"
+  }
+}
